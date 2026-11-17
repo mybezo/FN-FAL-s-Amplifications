@@ -1,52 +1,71 @@
-# :part_alternation_mark: FN Amplifications - FN 科技
+# :part_alternation_mark: FN Amplifications
 
-这是一个添加了众多种类物品、为服务器带来更多玩法的 Slimefun 附属插件! 从太阳能板, 机器, 方块挖掘机, 装备, 法杖, 还有各式各样的物品!
+<div align="center">
 
-更多玩法等待着玩家自己在尝试和制作中发现. 附属中物品的合成难度与 InfinityXpansion 和 LiteXpansion 相似, 不过你所付出的努力都是值得的!
+![bStats Servers](https://img.shields.io/bstats/servers/13219)
+![bStats Players](https://img.shields.io/bstats/players/13219)
 
-该附属支持 1.16.x - 1.19.x 版本
+</div>
 
-## :bulb: 特性
+A slimefun addon that adds different types of items and more content for your server! From solar panels, machines, block breakers, gears, staffs and more!
+More awaits ingame for the players to try and craft for themselves. It pars with InfinityXpansion and LiteXpansion level of difficulty in terms
+of crafting. Come and explore FN's Amplifications! 
 
-- **能源进化 (PowerXpansion)** - 添加了 12 种等级的有可切换全息文本的发电机, 还能够使用 LiteXpansion 物品作为合成材料的一部分!
-- **太阳能板** - 为那些全天高耗能的机器新增了 8 种等级的太阳能板
-- **材料生成器** - 粘土、诡异菌岩、泥土, 应有尽有!
-- **机器** - 机器降级机, 冷凝机, 压缩机, 回收机和转换器
-- **金属废料** - 使用机器降级机降级机器可以获取金属废料, 并用作合成 FN 组件的材料
-- **电动方块挖掘机** - 配有可开关精准采集的方块挖掘机!
-- **20+ 种法杖** - 有着[区域效果云](https://wiki.biligame.com/mc/%E6%BB%9E%E7%95%99%E8%8D%AF%E6%B0%B4#%E5%8C%BA%E5%9F%9F%E6%95%88%E6%9E%9C%E4%BA%91), 移动实体等更多效果, 记得去试试!
-- **11 种神秘魔棍** - 用于 PVP/PVE 的魔棍, 使用时通过消耗你的经验值, 提升你的 PVP 能力!
-- **25+ 种宝石** - 将宝石镶嵌在武器或盔甲上获得额外的能力和加成!
-- **箭袋** - 可以储存普通箭和光灵箭, 节省背包空间.
-- **FN 盔甲** - 升级盔甲获得额外属性和附魔
-- **FN 锄头** - 自动耕种 5x5 区域内的农田, 还可以自动补种!
-- **FN 方块转向机** - 能够旋转陶瓦、楼梯、门、台阶等有方向的方块!
-- **FN 唱片机** - 能够播放放入的唱片, 并且支持顺序播放的唱片机, 有 3 到 12 个槽位可供储存唱片, 不必手动换碟!
-- **FN 自动搭梯机** - 自动在上下最大8格高度的方块上放置梯子
-- **FN 闪耀珍珠** - 用这颗珍珠带着你骑着的实体一起传送!
-- **FN 可投掷火把** - 右键丢出火把, 会自动在落地点放置火把
-- **未来还会添加更多新东西!**
+Addon supports Minecraft 1.21.x up to 26.x (requires Java 21 or newer)
 
-## :arrow_down: 下载
+## :bulb: Features
+- **PowerXpansion** - 12 new power generators with holograms (toggle-able) which integrates with LiteXpansion's items as recipes!
+- **Solar Panels** - 8 solar panels for power hungry minds during day only
+- **Material Generators** - Clay, Warped Nylium, Dirt generator and more! 
+- **Machineries** - Electric machine downgrader, condenser, compressor, recycler and transformers
+- **Metal Scraps** - Obtain metal scrap from downgrading machines using the electric machine downgrader
+                     and use the scraps for crafting FN components that is needed in machineries
+- **Electric Block Breaker** - Can be toggled in side the machine gui to break with or without silk touch!
+- **20+ sets of Staffs** - From area of effect clouds, moving entities, and many more, check them out!
+- **11 sets of Mystery Sticks** - PVP/PVE sticks, these will consume xp levels by chance per use and best for op pvp!
+- **25+ sets of Gems** - Drag and drop these magical gems into your weapons, armors and tools for extra abilities and bonuses!
+- **Quivers** - Normal and Spectral quivers that can store more arrows saving up spaces in your inventory
+- **FN Gears** - Level up the gears to receive bonus attributes and enchants
+- **FN Hoe** - Soil/till land and harvest crops in a 5x5 square area, can also auto replant!
+- **FN Block Rotator** - Rotate or flip blocks like terracotta, stairs, doors, slabs and many more!
+- **FN Electric Jukebox** - Jukeboxes that can play or traverse music disc in the disc slots gui and can auto play after one has finished playing, ranging from 3 to 12 slots you never have to worry about manually changing each disc!
+- **FN Auto Ladder** - Automatically places a ladder with a max of 8 blocks from below and above
+- **FN Orient Pearl** - Teleport your entity while riding them (horses, etc) with this pearl!
+- **FN Throwable Torch** - Right click to throw this torch in a target location, gets auto placed if it hits a block!
+- **and more coming anytime soon!**
 
-### [从构建站下载](https://builds.guizhanss.net/SlimefunGuguProject/FN-FAL-s-Amplifications/main/)
+## :arrow_down: Download from build page with auto updates
+### [Download Official Jar](https://blob.build/project/FNAmplifications)
 
-![构建状态](https://builds.guizhanss.net/f/SlimefunGuguProject/FN-FAL-s-Amplifications/main/badge.svg)
+## ⏯️ Tutorial by Boomer_1 covering this addon
+More has changed since this video was released meaning more items and content since the past few months! 
+[![Click to watch video](http://i3.ytimg.com/vi/tXuXoYmx65M/hqdefault.jpg)](https://www.youtube.com/watch?v=tXuXoYmx65M)
 
-### :computer: 几乎全部都是可配置的
+### :computer: Everything is configurable in terms of Power Rates, Buffer, Capacity, Tick Rates, Staff max uses and more
+Most of the stuffs inside ```/plugins/FNAmplifications``` folder are configurable.
+ 
+Each major category has its own configurable settings. 
 
-大多数在 ```/plugins/FNAmplifications``` 文件下的文件都是可配置的.
+You can change them if you think they need balancing or for several reasons 
 
-每个文件夹都有不同的可配置设置.
+### :running: Head over to SF Addon Community Server for feedbacks 
+<p>
+  <a href="https://discord.gg/slimefun">
+    <img src="https://discordapp.com/api/guilds/565557184348422174/widget.png?style=banner3" alt="Discord Invite"/>
+  </a>
+  <a href="https://discord.gg/SqD3gg5SAU">
+    <img src="https://discordapp.com/api/guilds/809178621424041997/widget.png?style=banner3" alt="Discord Invite"/>
+  </a>
+</p>
 
-如果担心平衡这类的问题, 你可以修改这些设置.
+## 💖 Support the Project/Dev
+I develop stuff for free with dedication and hard work. Sharing this project with fellow minecraft gamers/server owners or giving it a star is a huge sign of appreciation!</br>
+Donations are welcome but not required. 💖<br/>
+<a href="https://www.paypal.com/paypalme/fnfal113" target=_blank>
+  <img src="https://raw.githubusercontent.com/stefan-niedermann/paypal-donate-button/master/paypal-donate-button.png" alt="Donate with PayPal" width="40%" />
+</a>
 
-### :running: 反馈
-
-注意: 在非官方汉化版中遇到问题时, 请在交流群反馈
-
-### 特别鸣谢
-
-感谢 waleks 的 SMG 附属 (现在由 Sefiraat 和 Variananora 开发)
-
-非常感谢在此附属中使用到的头颅材质的作者们
+## :label: Credits
+Waleks for SMG based generators<br>
+Minecraft-Heads for the head textures used by the addon:<br>
+[Visit MC Heads Site](https://minecraft-heads.com/)

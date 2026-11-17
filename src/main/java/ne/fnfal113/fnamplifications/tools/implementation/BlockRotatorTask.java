@@ -1,11 +1,13 @@
 package ne.fnfal113.fnamplifications.tools.implementation;
 
+import ne.fnfal113.fnamplifications.utils.compatibility.VersionedTag;
 import com.google.common.collect.Sets;
-import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
+
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
-import lombok.Getter;
+
 import ne.fnfal113.fnamplifications.utils.Utils;
+
 import org.bukkit.Axis;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
@@ -26,22 +28,18 @@ import java.util.Set;
 
 public class BlockRotatorTask {
 
-    @Getter
     private static final Set<Material> directionalBlocks = new HashSet<>();
 
-    @Getter
     private static final Map<BlockFace, BlockFace> blockFaceMap = new HashMap<>();
 
     static {
-        if(Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_17)){
-            directionalBlocks.add(Material.BIG_DRIPLEAF);
-            directionalBlocks.add(Material.BIG_DRIPLEAF_STEM);
-        }
+        directionalBlocks.add(Material.BIG_DRIPLEAF);
+        directionalBlocks.add(Material.BIG_DRIPLEAF_STEM);
 
         directionalBlocks.addAll(Sets.newHashSet(
-                Material.TRIPWIRE_HOOK, Material.LADDER,
-                Material.WALL_TORCH, Material.LEVER,
-                Material.REDSTONE_WALL_TORCH, Material.SOUL_WALL_TORCH));
+            Material.TRIPWIRE_HOOK, Material.LADDER,
+            Material.WALL_TORCH, Material.LEVER,
+            Material.REDSTONE_WALL_TORCH, Material.SOUL_WALL_TORCH));
 
         directionalBlocks.addAll(Tag.BUTTONS.getValues());
         directionalBlocks.addAll(Tag.WALL_SIGNS.getValues());
@@ -54,16 +52,18 @@ public class BlockRotatorTask {
 
     public BlockRotatorTask () {}
 
-    public void onRightClick(Block block, Player player){
+    public void onRightClick(Block block, Player player) {
         if(!Slimefun.getProtectionManager().hasPermission(Bukkit.getOfflinePlayer(player.getUniqueId()),
-                player.getLocation(), Interaction.BREAK_BLOCK)){
-            player.sendMessage(Utils.colorTranslator("&c&l[FNAmpli" + "&b&lfications] > " + "&e你没有权限旋转这个方块!"));
+            player.getLocation(), Interaction.BREAK_BLOCK)) {
+            Utils.sendMessage("You don't have permission to rotate that block!", player);
+
             return;
         }
+
         BlockData blockData = block.getBlockData();
 
-        if(player.isSneaking()){
-            if(Tag.DOORS.isTagged(block.getType()) || Tag.TALL_FLOWERS.isTagged(block.getType()) ||
+        if(player.isSneaking()) {
+            if(Tag.DOORS.isTagged(block.getType()) || VersionedTag.isTagged(VersionedTag.TALL_FLOWERS, block.getType()) ||
                     Tag.FLOWERS.isTagged(block.getType())){
                 return;
             }
@@ -143,7 +143,7 @@ public class BlockRotatorTask {
     private void rotate(Directional directional, Block block){
         BlockFace face = directional.getFacing();
 
-        if(isNextAttachBlockAir(block, getBlockFaceMap().get(face))){
+        if(isNextAttachBlockAir(block, getBlockfacemap().get(face))){
             return;
         }
 
@@ -171,6 +171,14 @@ public class BlockRotatorTask {
         }
 
         return false;
+    }
+
+    public static Set<Material> getDirectionalblocks() {
+        return directionalBlocks;
+    }
+
+    public static Map<BlockFace, BlockFace> getBlockfacemap() {
+        return blockFaceMap;
     }
 
 }

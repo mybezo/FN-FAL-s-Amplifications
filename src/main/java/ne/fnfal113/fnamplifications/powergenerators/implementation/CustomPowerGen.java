@@ -1,53 +1,50 @@
 package ne.fnfal113.fnamplifications.powergenerators.implementation;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Nonnull;
 
-import dev.j3fftw.extrautils.utils.LoreBuilderDynamic;
-import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
-import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.core.attributes.HologramOwner;
-import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
-import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
-import io.github.thebusybiscuit.slimefun4.core.handlers.BlockUseHandler;
-
-import lombok.SneakyThrows;
-import me.mrCookieSlime.Slimefun.api.BlockStorage;
-import ne.fnfal113.fnamplifications.FNAmplifications;
-import ne.fnfal113.fnamplifications.utils.Utils;
 import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.inventory.ItemStack;
-
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
-import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
-
-import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
-
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.util.Vector;
 
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetProvider;
+import io.github.thebusybiscuit.slimefun4.core.attributes.HologramOwner;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockBreakHandler;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockPlaceHandler;
+import io.github.thebusybiscuit.slimefun4.core.handlers.BlockUseHandler;
+import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
+import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 
-public class CustomPowerGen extends SlimefunItem implements HologramOwner, EnergyNetProvider  {
+import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
+import me.mrCookieSlime.Slimefun.api.BlockStorage;
+
+import ne.fnfal113.fnamplifications.FNAmplifications;
+import ne.fnfal113.fnamplifications.utils.Utils;
+
+public class CustomPowerGen extends SlimefunItem implements HologramOwner, EnergyNetProvider {
 
     private final Map<Location, Boolean> HOLO_CACHE = new HashMap<>();
 
-    @SneakyThrows
     public CustomPowerGen(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, int dayRate, int nightRate, int output, int storage) {
         super(itemGroup, item, recipeType, recipe);
 
         setConfigValues(dayRate, nightRate, output, storage);
         setLore(this.getItem());
 
-        addItemHandler(toggleHologram(),
+        addItemHandler(
+                toggleHologram(),
                 new BlockBreakHandler(false, false) {
                     @Override
                     public void onPlayerBreak(@Nonnull BlockBreakEvent e, @Nonnull ItemStack item, @Nonnull List<ItemStack> drops) {
@@ -68,19 +65,26 @@ public class CustomPowerGen extends SlimefunItem implements HologramOwner, Energ
 
     public void setLore(ItemStack itemStack){
         ItemMeta meta = itemStack.getItemMeta();
+        
         List<String> lore = meta.getLore();
-        lore.add(Utils.colorTranslator(LoreBuilderDynamic.powerBuffer(FNAmplifications.getInstance().getConfigManager().getCustomConfig("power-xpansion-settings").getInt(this.getId() + "." + "storage"))));
-        lore.add(Utils.colorTranslator(LoreBuilderDynamic.powerPerTick(FNAmplifications.getInstance().getConfigManager().getCustomConfig("power-xpansion-settings").getInt(this.getId() + "." + "dayrate")) + " (白天)"));
-        lore.add(Utils.colorTranslator(LoreBuilderDynamic.powerPerTick(FNAmplifications.getInstance().getConfigManager().getCustomConfig("power-xpansion-settings").getInt(this.getId() + "." + "nightrate")) + " (夜晚)"));
+        
+        lore.add(Utils.colorTranslator(LoreBuilder.powerBuffer(FNAmplifications.getInstance().getConfigManager().getCustomConfig("power-xpansion-settings").getInt(this.getId() + "." + "storage"))));
+        lore.add(Utils.colorTranslator("&8\u21E8 &e\u26A1 &7" + Utils.powerFormat.format(FNAmplifications.getInstance().getConfigManager().getCustomConfig("power-xpansion-settings").getInt(this.getId() + "." + "dayrate")) + " J/t" + " (Day Rate)"));
+        lore.add(Utils.colorTranslator("&8\u21E8 &e\u26A1 &7" + Utils.powerFormat.format(FNAmplifications.getInstance().getConfigManager().getCustomConfig("power-xpansion-settings").getInt(this.getId() + "." + "nightrate")) + " J/t" + " (Night Rate)"));
+        
         meta.setLore(lore);
         itemStack.setItemMeta(meta);
     }
 
-    public void setConfigValues(int dayRate, int nightRate, int output, int storage) throws IOException {
-        FNAmplifications.getInstance().getConfigManager().initializeConfig(this.getId(), "dayrate", dayRate, "power-xpansion-settings");
+    public void setConfigValues(int dayRate, int nightRate, int output, int storage) {
+        try {
+            FNAmplifications.getInstance().getConfigManager().initializeConfig(this.getId(), "dayrate", dayRate, "power-xpansion-settings");
         FNAmplifications.getInstance().getConfigManager().initializeConfig(this.getId(), "nightrate", nightRate, "power-xpansion-settings");
         FNAmplifications.getInstance().getConfigManager().initializeConfig(this.getId(), "output", output, "power-xpansion-settings");
         FNAmplifications.getInstance().getConfigManager().initializeConfig(this.getId(), "storage", storage, "power-xpansion-settings");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Nonnull
@@ -130,7 +134,7 @@ public class CustomPowerGen extends SlimefunItem implements HologramOwner, Energ
         } else {
             if(HOLO_CACHE.get(l)) {
                 String charge = getCharge(l) <= 0 ? Utils.colorTranslator("&8" + getCharge(l)) : Utils.colorTranslator("&a" + getCharge(l));
-                updateHologram(l.getBlock(), Utils.colorTranslator("&e已储存 &a⚡: " + charge));
+                updateHologram(l.getBlock(), Utils.colorTranslator("&eStored &a⚡: " + charge));
             }
         }
 

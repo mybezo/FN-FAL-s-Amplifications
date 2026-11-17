@@ -3,9 +3,11 @@ package ne.fnfal113.fnamplifications.machines.implementation;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+
 import ne.fnfal113.fnamplifications.items.FNAmpItems;
 import ne.fnfal113.fnamplifications.machines.*;
 import ne.fnfal113.fnamplifications.multiblocks.FnAssemblyStation;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -117,22 +119,22 @@ public class RegisterMachines {
         new ElectricJukebox(FNAmpItems.MACHINES, FNAmpItems.FN_JUKEBOX_I, FnAssemblyStation.RECIPE_TYPE, new ItemStack[]{
                 FNAmpItems.BASIC_MACHINE_BLOCK, FNAmpItems.BRASS_PLATING, FNAmpItems.BASIC_MACHINE_BLOCK,
                 SlimefunItems.COPPER_INGOT, new ItemStack(Material.JUKEBOX), SlimefunItems.COPPER_INGOT,
-                FNAmpItems.COMPONENT_PART, FNAmpItems.BRASS_PLATING,  FNAmpItems.COMPONENT_PART},
-                21, 23, 21, 0 ,0, false)
+                FNAmpItems.COMPONENT_PART, FNAmpItems.BRASS_PLATING, FNAmpItems.COMPONENT_PART},
+                21, 23, 0 ,0, false)
                 .setCapacity(512).setEnergyConsumption(3).register(instance);
 
         new ElectricJukebox(FNAmpItems.MACHINES, FNAmpItems.FN_JUKEBOX_II, FnAssemblyStation.RECIPE_TYPE, new ItemStack[]{
                 FNAmpItems.ALUMINUM_PLATING, FNAmpItems.BASIC_MACHINE_BLOCK, FNAmpItems.ALUMINUM_PLATING,
                 SlimefunItems.ALUMINUM_INGOT, FNAmpItems.FN_JUKEBOX_I, SlimefunItems.ALUMINUM_INGOT,
-                FNAmpItems.COMPONENT_PART, FNAmpItems.COMPONENT_PART,  FNAmpItems.COMPONENT_PART},
-                19, 25, 19, 0, 0, false)
+                FNAmpItems.COMPONENT_PART, FNAmpItems.COMPONENT_PART, FNAmpItems.COMPONENT_PART},
+                19, 25, 0, 0, false)
                 .setCapacity(768).setEnergyConsumption(8).register(instance);
 
         new ElectricJukebox(FNAmpItems.MACHINES, FNAmpItems.FN_JUKEBOX_III, FnAssemblyStation.RECIPE_TYPE, new ItemStack[]{
                 FNAmpItems.BASIC_MACHINE_BLOCK, FNAmpItems.COMPONENT_PART, FNAmpItems.BASIC_MACHINE_BLOCK,
                 SlimefunItems.BRASS_INGOT, FNAmpItems.FN_JUKEBOX_II, SlimefunItems.BRASS_INGOT,
-                FNAmpItems.COMPONENT_PART, FNAmpItems.REINFORCED_CASING,  FNAmpItems.COMPONENT_PART},
-                19, 25, 19, 29, 33, true)
+                FNAmpItems.COMPONENT_PART, FNAmpItems.REINFORCED_CASING, FNAmpItems.COMPONENT_PART},
+                19, 25, 29, 33, true)
                 .setCapacity(1024).setEnergyConsumption(16).register(instance);
     }
 }

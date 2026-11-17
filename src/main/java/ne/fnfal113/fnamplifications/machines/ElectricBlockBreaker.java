@@ -1,7 +1,5 @@
 package ne.fnfal113.fnamplifications.machines;
 
-import dev.j3fftw.extrautils.interfaces.InventoryBlock;
-import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemState;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -14,16 +12,19 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.protection.Interaction;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
-import lombok.SneakyThrows;
 import me.mrCookieSlime.CSCoreLibPlugin.Configuration.Config;
+import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.interfaces.InventoryBlock;
 import me.mrCookieSlime.Slimefun.Objects.handlers.BlockTicker;
 import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import me.mrCookieSlime.Slimefun.api.item_transport.ItemTransportFlow;
+
 import ne.fnfal113.fnamplifications.FNAmplifications;
 import ne.fnfal113.fnamplifications.utils.Utils;
+
 import org.apache.commons.lang.Validate;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -49,6 +50,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
 
+@SuppressWarnings("deprecation")
 public class ElectricBlockBreaker extends SlimefunItem implements InventoryBlock, EnergyNetComponent {
 
     public static final Map<Location, BlockBreakerCache> CACHE_MAP = new HashMap<>();
@@ -58,42 +60,42 @@ public class ElectricBlockBreaker extends SlimefunItem implements InventoryBlock
     private static final ItemStack VERSIONED_AMETHYST;
 
     private static final CustomItemStack NOT_OPERATING = new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE,
-            "&c未在运作...",
-            "&e请将要挖掘的方块放在发射器面前!"
+        "&cNot Operating...",
+        "&ePlace a block facing the dispenser!"
     );
 
     private static final CustomItemStack NO_POWER = new CustomItemStack(Material.RED_STAINED_GLASS_PANE,
-            "&c缺少电力!",
-            "&e必须通电才能运作!"
+        "&cNo Power!",
+        "&ePower it up first!"
     );
 
     private static final CustomItemStack NOT_RUNNING = new CustomItemStack(Material.YELLOW_STAINED_GLASS_PANE,
-            "&c未在运行",
-            "&e请先启动机器"
+        "&cNot Running",
+        "&eToggle it on first"
     );
 
     private static final CustomItemStack BREAK_BLOCK_NATURALLY = new CustomItemStack(Material.PINK_STAINED_GLASS_PANE,
-            "&d&l模式:",
-            "&e正常破坏方块 (无精准采集)",
-            "单击修改模式"
+        "&d&lMode:",
+        "&eBreak block naturally (No Silk Touch)",
+        "Click to change"
     );
 
     private static final CustomItemStack DROP_BLOCK_NATURALLY = new CustomItemStack(Material.CYAN_STAINED_GLASS_PANE,
-            "&d&l模式:",
-            "&e正常破坏方块 (精准采集)",
-            "单击修改模式"
+        "&d&lMode:",
+        "&eDrop block naturally (Silk Touch)",
+        "Click to change"
     );
 
     private static final CustomItemStack TOGGLED_ON = new CustomItemStack(Material.BLUE_STAINED_GLASS_PANE,
-            "&d&l状态:",
-            "&e已启用 (运行中)",
-            "单击切换"
+        "&d&lToggle:",
+        "&eEnabled (Running)",
+        "Click to change"
     );
 
     private static final CustomItemStack TOGGLED_OFF = new CustomItemStack(Material.WHITE_STAINED_GLASS_PANE,
-            "&d&lToggle:",
-            "&e已关闭 (未在运行)",
-            "单击切换"
+        "&d&lToggle:",
+        "&eDisabled (Not Running)",
+        "Click to change"
     );
 
     public static final ItemStack DUMMY_PICK = new ItemStack(Material.DIAMOND_PICKAXE);
@@ -109,11 +111,7 @@ public class ElectricBlockBreaker extends SlimefunItem implements InventoryBlock
 
     static {
         // Amethyst
-        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_17)) {
-            VERSIONED_AMETHYST = new ItemStack(Material.BUDDING_AMETHYST);
-        } else {
-            VERSIONED_AMETHYST = new ItemStack(Material.BEDROCK);
-        }
+        VERSIONED_AMETHYST = new ItemStack(Material.BUDDING_AMETHYST);
 
         // Silk
         ItemMeta meta = DUMMY_SILK_PICK.getItemMeta();
@@ -131,7 +129,6 @@ public class ElectricBlockBreaker extends SlimefunItem implements InventoryBlock
     private int rate = 2;
 
     @ParametersAreNonnullByDefault
-    @SneakyThrows
     public ElectricBlockBreaker(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe, int tickRate) {
         super(itemGroup, item, recipeType, recipe);
 
@@ -261,9 +258,9 @@ public class ElectricBlockBreaker extends SlimefunItem implements InventoryBlock
                     int progress = cache.progress;
 
                     if (invMenu.hasViewer()) {
-                        invMenu.replaceExistingItem(4, new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a运行中!",
-                                "", "&b速率: " + this.rate + " ticks/每方块", "&2方块破坏进度: " + progress
-                                + "/" + this.rate));
+                        invMenu.replaceExistingItem(4, new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&aOperating!",
+                            "", "&bRate: " + this.rate + " ticks per Block", "&2Breaking block at rate: " + progress
+                            + "/" + this.rate));
                     }
 
                     if (progress >= this.rate) {
@@ -279,7 +276,7 @@ public class ElectricBlockBreaker extends SlimefunItem implements InventoryBlock
                             }
                         }
                         targetLocation.playSound(b.getLocation().add(0.5, 0.5, 0.5), Sound.UI_STONECUTTER_TAKE_RESULT, 1, 1);
-                        b.getWorld().spawnParticle(Particle.SMOKE_LARGE, b.getLocation().add(1, 1, 1), 2, 0.1, 0.1, 0.1);
+                        b.getWorld().spawnParticle(Particle.SMOKE, b.getLocation().add(1, 1, 1), 2, 0.1, 0.1, 0.1);
                     } else {
                         progress++;
                         targetLocation.playSound(b.getLocation().add(0.5, 0.5, 0.5), Sound.BLOCK_STONE_HIT, 1, 1);

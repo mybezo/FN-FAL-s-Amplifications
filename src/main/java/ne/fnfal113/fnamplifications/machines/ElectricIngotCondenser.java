@@ -9,7 +9,6 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -29,11 +28,7 @@ public class ElectricIngotCondenser extends AContainer implements RecipeDisplayI
     public static final ItemStack VERSIONED_ITEMSTACK_COPPER;
 
     static {
-        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_17)) {
-            VERSIONED_ITEMSTACK_COPPER = new ItemStack(Material.COPPER_INGOT, 2);
-        } else {
-            VERSIONED_ITEMSTACK_COPPER = new SlimefunItemStack(SlimefunItems.COPPER_INGOT, 2);
-        }
+        VERSIONED_ITEMSTACK_COPPER = new ItemStack(Material.COPPER_INGOT, 2);
     }
 
     public ElectricIngotCondenser(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -48,10 +43,10 @@ public class ElectricIngotCondenser extends AContainer implements RecipeDisplayI
         for (MachineRecipe recipe : recipes) {
             displayRecipes.add(recipe.getInput()[0]);
             displayRecipes.add(recipe.getInput()[1]);
-            displayRecipes.add(new CustomItemStack(Material.PINK_STAINED_GLASS_PANE, "&e指示器", "&f下方箭头指向左侧合成原料所浓缩出的产物"));
+            displayRecipes.add(new CustomItemStack(Material.PINK_STAINED_GLASS_PANE, "&eIndicator", "&fArrow below point towards the output of 2 vertical inputs"));
             displayRecipes.add(PlayerHead.getItemStack(PlayerSkin.fromHashCode(
                     "682ad1b9cb4dd21259c0d75aa315ff389c3cef752be3949338164bac84a96e")));
-            displayRecipes.add(new CustomItemStack(Material.PINK_STAINED_GLASS_PANE, "&e指示器", "&f玻璃旁边的下一个物品", "&f是左侧金属浓缩出的产物"));
+            displayRecipes.add(new CustomItemStack(Material.PINK_STAINED_GLASS_PANE, "&eIndicator", "&fNext item beside this glass is", "&fa 2 input recipe vertical 1 output horizontal"));
             displayRecipes.add(recipe.getOutput()[0]);
         }
 

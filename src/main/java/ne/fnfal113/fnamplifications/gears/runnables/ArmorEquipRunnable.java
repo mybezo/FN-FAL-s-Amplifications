@@ -1,7 +1,6 @@
 package ne.fnfal113.fnamplifications.gears.runnables;
 
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-import ne.fnfal113.fnamplifications.FNAmplifications;
 import ne.fnfal113.fnamplifications.gears.FnChestPlate;
 import ne.fnfal113.fnamplifications.utils.Keys;
 import org.bukkit.Bukkit;
@@ -26,10 +25,7 @@ public class ArmorEquipRunnable implements Runnable {
 
             if(SlimefunItem.getByItem(itemStack) instanceof FnChestPlate){
                 if(getArmorLevel(itemStack) >= 30){
-                    // add potion effect synchronously to prevent api level async usage errors
-                    Bukkit.getScheduler().runTask(FNAmplifications.getInstance(), () ->
-                            p.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 600, 1, false, false, false))
-                    );
+                    p.addPotionEffect(new PotionEffect(PotionEffectType.SATURATION, 600, 1, false, false, false));
                 } // armor level check
             } // instanceof FnChestPlate
         } // for each online players

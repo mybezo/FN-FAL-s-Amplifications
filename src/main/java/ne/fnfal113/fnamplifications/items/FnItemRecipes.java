@@ -1,14 +1,13 @@
 package ne.fnfal113.fnamplifications.items;
 
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import ne.fnfal113.fnamplifications.config.ReturnConfValue;
+import ne.fnfal113.fnamplifications.FNAmplifications;
 import ne.fnfal113.fnamplifications.machines.ElectricMachineDowngrader;
 import ne.fnfal113.fnamplifications.multiblocks.FnGemAltar;
 import ne.fnfal113.fnamplifications.multiblocks.FnMagicAltar;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
@@ -16,8 +15,6 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
 
 public class FnItemRecipes {
-
-    private static final ReturnConfValue value = new ReturnConfValue();
 
     public static final ItemStack VERSIONED_ITEMSTACK_COPPER;
     public static final ItemStack VERSIONED_ITEMSTACK_COPPER_BATTERY;
@@ -29,7 +26,7 @@ public class FnItemRecipes {
     public static final ItemStack VERSIONED_ITEMSTACK_AMETHYSTCLUSTER_IRON;
 
     static {
-        if (Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_17) && value.latestMcVersionRecipe()) {
+        if (FNAmplifications.getInstance().getJavaPlugin().getConfig().getBoolean("New-Recipe-Integration")) {
             VERSIONED_ITEMSTACK_COPPER = new ItemStack(Material.COPPER_INGOT);
             VERSIONED_ITEMSTACK_COPPER_BATTERY = new ItemStack(Material.COPPER_INGOT);
             VERSIONED_ITEMSTACK_COPPER_BLOCK_INGOT = new ItemStack(Material.COPPER_BLOCK);

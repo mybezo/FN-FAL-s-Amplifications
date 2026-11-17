@@ -1,6 +1,5 @@
 package ne.fnfal113.fnamplifications.gears.implementation;
 
-import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
@@ -16,8 +15,7 @@ import org.bukkit.inventory.ItemStack;
 
 public class RegisterGears {
 
-    private static final ItemStack INGOT = Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_16) ?
-            new ItemStack(Material.NETHERITE_INGOT, 2) : new ItemStack(Material.DIAMOND, 2);
+    private static final ItemStack INGOT = new ItemStack(Material.NETHERITE_INGOT, 2);
 
     public static void setup(SlimefunAddon instance){
         new FnBoots(FNAmpItems.FN_GEARS, FNAmpItems.FN_GEAR_BOOTS, FnAssemblyStation.RECIPE_TYPE, new ItemStack[]{

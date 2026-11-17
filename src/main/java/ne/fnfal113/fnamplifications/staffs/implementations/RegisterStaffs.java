@@ -1,6 +1,5 @@
 package ne.fnfal113.fnamplifications.staffs.implementations;
 
-import io.github.thebusybiscuit.slimefun4.api.MinecraftVersion;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
@@ -32,13 +31,11 @@ public class RegisterStaffs {
                 null, SlimefunItems.MAGIC_SUGAR, null})
                 .register(instance);
 
-        if(Slimefun.getMinecraftVersion().isAtLeast(MinecraftVersion.MINECRAFT_1_17)) {
-            new StaffOfDeepFreeze(FNAmpItems.FN_STAFFS, FNAmpItems.FN_STAFF_DEEPFREEZE, FnAssemblyStation.RECIPE_TYPE, new ItemStack[]{
-                    null, FNAmpItems.LINGER_RUNE, null,
-                    FNAmpItems.ICE_RUNE, new ItemStack(Material.BLAZE_ROD), FNAmpItems.ICE_RUNE,
-                    null, SlimefunItems.MAGIC_SUGAR, null})
-                    .register(instance);
-        }
+        new StaffOfDeepFreeze(FNAmpItems.FN_STAFFS, FNAmpItems.FN_STAFF_DEEPFREEZE, FnAssemblyStation.RECIPE_TYPE, new ItemStack[]{
+                null, FNAmpItems.LINGER_RUNE, null,
+                FNAmpItems.ICE_RUNE, new ItemStack(Material.BLAZE_ROD), FNAmpItems.ICE_RUNE,
+                null, SlimefunItems.MAGIC_SUGAR, null})
+                .register(instance);
 
         new StaffOfExplosion(FNAmpItems.FN_STAFFS, FNAmpItems.FN_STAFF_EXPLOSION, FnAssemblyStation.RECIPE_TYPE, new ItemStack[]{
                 FNAmpItems.POWER_RUNE, new ItemStack(Material.TNT, 1), FNAmpItems.POWER_RUNE,
