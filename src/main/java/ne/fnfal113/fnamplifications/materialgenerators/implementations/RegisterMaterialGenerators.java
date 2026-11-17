@@ -1,5 +1,6 @@
 package ne.fnfal113.fnamplifications.materialgenerators.implementations;
 
+import ne.fnfal113.fnamplifications.integrations.RecipeIntegration;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import ne.fnfal113.fnamplifications.multiblocks.FnAssemblyStation;
@@ -35,7 +36,7 @@ public class RegisterMaterialGenerators {
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[]{
                         SlimefunItems.GOLD_PAN, new ItemStack(Material.CLAY), SlimefunItems.GOLD_PAN,
-                        new ItemStack(Material.DIAMOND_PICKAXE), FNAmpItems.FMG_GENERATOR_CLAY_BROKEN, new ItemStack(Material.DIAMOND_PICKAXE),
+                        RecipeIntegration.simpleMaterialGenerators("SMG_GENERATOR_GRAVEL", new ItemStack(Material.DIAMOND_PICKAXE)), FNAmpItems.FMG_GENERATOR_CLAY_BROKEN, RecipeIntegration.simpleMaterialGenerators("SMG_GENERATOR_GRAVEL", new ItemStack(Material.DIAMOND_PICKAXE)),
                         new ItemStack(Material.DIAMOND_PICKAXE), new ItemStack(Material.FURNACE), new ItemStack(Material.DIAMOND_PICKAXE)}, 32)
                 .setItem(Material.CLAY)
                 .setMaterialName("&3&lClay")
@@ -55,7 +56,7 @@ public class RegisterMaterialGenerators {
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[]{
                         SHOVEL.clone(), new ItemStack(Material.WARPED_NYLIUM), SHOVEL.clone(),
-                        FNAmpItems.FMG_GENERATOR_WARPED_BROKEN, FNAmpItems.FMG_GENERATOR_WARPED_BROKEN, FNAmpItems.FMG_GENERATOR_WARPED_BROKEN,
+                        RecipeIntegration.simpleMaterialGenerators("SMG_GENERATOR_NETHERRACK", FNAmpItems.FMG_GENERATOR_WARPED_BROKEN), FNAmpItems.FMG_GENERATOR_WARPED_BROKEN, RecipeIntegration.simpleMaterialGenerators("SMG_GENERATOR_NETHERRACK", FNAmpItems.FMG_GENERATOR_WARPED_BROKEN),
                         SHOVEL.clone(), new ItemStack(Material.BLAST_FURNACE), SHOVEL.clone()}, 48)
                 .setItem(Material.WARPED_NYLIUM)
                 .setMaterialName("&4&cWarped Nylium")
@@ -74,9 +75,9 @@ public class RegisterMaterialGenerators {
                 FNAmpItems.FMG_GENERATOR_TERRACOTTA,
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[]{
-                        SlimefunItems.DAMASCUS_STEEL_INGOT, new ItemStack(Material.DIAMOND_PICKAXE), SlimefunItems.DAMASCUS_STEEL_INGOT,
+                        RecipeIntegration.simpleMaterialGenerators("SMG_GENERATOR_COBBLESTONE", SlimefunItems.DAMASCUS_STEEL_INGOT), RecipeIntegration.simpleMaterialGenerators("SMG_GENERATOR_GRAVEL", new ItemStack(Material.DIAMOND_PICKAXE)), RecipeIntegration.simpleMaterialGenerators("SMG_GENERATOR_COBBLESTONE", SlimefunItems.DAMASCUS_STEEL_INGOT),
                         FNAmpItems.FMG_GENERATOR_CLAY, FNAmpItems.FMG_GENERATOR_TERRACOTTA_BROKEN, FNAmpItems.FMG_GENERATOR_CLAY,
-                        SlimefunItems.DAMASCUS_STEEL_INGOT, new ItemStack(Material.BLAST_FURNACE), SlimefunItems.DAMASCUS_STEEL_INGOT}, 84)
+                        RecipeIntegration.simpleMaterialGenerators("SMG_GENERATOR_COBBLESTONE", SlimefunItems.DAMASCUS_STEEL_INGOT), new ItemStack(Material.BLAST_FURNACE), RecipeIntegration.simpleMaterialGenerators("SMG_GENERATOR_COBBLESTONE", SlimefunItems.DAMASCUS_STEEL_INGOT)}, 84)
                 .setItem(Material.TERRACOTTA)
                 .setMaterialName("&4&lTerracotta")
                 .register(instance);
@@ -94,7 +95,7 @@ public class RegisterMaterialGenerators {
                 FNAmpItems.FMG_GENERATOR_BONE,
                 RecipeType.ENHANCED_CRAFTING_TABLE,
                 new ItemStack[]{
-                        SlimefunItems.BLISTERING_INGOT_3, FNAmpItems.FMG_GENERATOR_CLAY, SlimefunItems.BLISTERING_INGOT_3,
+                        SlimefunItems.BLISTERING_INGOT_3, RecipeIntegration.simpleMaterialGenerators("SMG_GENERATOR_SOUL_SAND", FNAmpItems.FMG_GENERATOR_CLAY), SlimefunItems.BLISTERING_INGOT_3,
                         new ItemStack(Material.BONE), FNAmpItems.FMG_GENERATOR_BONE_BROKEN, new ItemStack(Material.BONE),
                         SlimefunItems.PROGRAMMABLE_ANDROID, new ItemStack(Material.BLAST_FURNACE), SlimefunItems.PROGRAMMABLE_ANDROID}, 256)
                 .setItem(Material.BONE)
@@ -105,7 +106,7 @@ public class RegisterMaterialGenerators {
                 FNAmpItems.FMG_GENERATOR_DIAMOND_BROKEN,
                 FnAssemblyStation.RECIPE_TYPE,
                 new ItemStack[]{
-                        SlimefunItems.SYNTHETIC_DIAMOND, PICKAXE.clone(), SlimefunItems.SYNTHETIC_DIAMOND,
+                        SlimefunItems.SYNTHETIC_DIAMOND, RecipeIntegration.simpleMaterialGenerators("SMG_GENERATOR_COBBLESTONE", PICKAXE), SlimefunItems.SYNTHETIC_DIAMOND,
                         new ItemStack(Material.DIAMOND_BLOCK), new ItemStack(Material.WATER_BUCKET), new ItemStack(Material.DIAMOND_BLOCK),
                         SlimefunItems.SYNTHETIC_DIAMOND, new ItemStack(Material.DIAMOND_PICKAXE), SlimefunItems.SYNTHETIC_DIAMOND})
                 .register(instance);
@@ -196,7 +197,7 @@ public class RegisterMaterialGenerators {
                 new ItemStack[]{
                         new ItemStack(Material.IRON_PICKAXE), new ItemStack(Material.IRON_PICKAXE), new ItemStack(Material.IRON_PICKAXE),
                         new ItemStack(Material.QUARTZ), FNAmpItems.FMG_GENERATOR_QUARTZ_BROKEN, new ItemStack(Material.QUARTZ),
-                        SlimefunItems.DAMASCUS_STEEL_INGOT, new ItemStack(Material.BLAST_FURNACE), SlimefunItems.DAMASCUS_STEEL_INGOT}, 28)
+                        RecipeIntegration.simpleMaterialGenerators("SMG_GENERATOR_COBBLESTONE", SlimefunItems.DAMASCUS_STEEL_INGOT), new ItemStack(Material.BLAST_FURNACE), RecipeIntegration.simpleMaterialGenerators("SMG_GENERATOR_COBBLESTONE", SlimefunItems.DAMASCUS_STEEL_INGOT)}, 28)
                 .setItem(Material.QUARTZ)
                 .setMaterialName("&f&lQuartz")
                 .register(instance);
@@ -212,7 +213,7 @@ public class RegisterMaterialGenerators {
                 new ItemStack[]{
                         FNAmpItems.FMG_GENERATOR_QUARTZ, silkTool.clone(), FNAmpItems.FMG_GENERATOR_QUARTZ,
                         silkTool.clone(), new ItemStack(Material.AMETHYST_BLOCK), silkTool.clone(),
-                        FNAmpItems.REINFORCED_CASING, FNAmpItems.FMG_GENERATOR_WARPED_BROKEN, FNAmpItems.REINFORCED_CASING})
+                        FNAmpItems.REINFORCED_CASING, RecipeIntegration.simpleMaterialGenerators("SMG_GENERATOR_NETHERRACK", FNAmpItems.FMG_GENERATOR_WARPED_BROKEN), FNAmpItems.REINFORCED_CASING})
                 .register(instance);
 
         new CustomMaterialGenerator(FNAmpItems.MATERIAL_GENERATORS,

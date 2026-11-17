@@ -6,6 +6,12 @@ auto-update: true
 # This will only work if server is running 1.17 and value is set to true
 New-Recipe-Integration: true
 
+# Use LiteXpansion's Iridium as PowerXpansion generator recipe ingredients (requires LiteXpansion)
+LiteX-Recipe-Integration: true
+
+# Use SimpleMaterialGenerators generators in some FN material generator recipes (requires SimpleMaterialGenerators)
+SMG-Recipe-Integration: true
+
 # Armor effect validator, the time to update the armor effects in seconds (i.e FN Gears of Friction permanent effects)
 # For now the chestplate only has a permanent effect at level 30
 armor-update-period: 10
